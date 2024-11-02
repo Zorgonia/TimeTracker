@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Time Tracker"
 include(":app")
- 
+include(":home")
+include(":history")

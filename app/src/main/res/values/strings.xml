@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Time Tracker</string>
+
+    <string name="nav_bar_home_label">Home</string>
+    <string name="nav_bar_history_label">History</string>
+    <string name="nav_home_icon">home icon</string>
+    <string name="nav_history_icon">history icon</string>
 </resources>
