@@ -19,7 +19,9 @@ import com.kyang.timetracker.navigation.BottomAppBarItem
 import com.kyang.timetracker.navigation.NavApp
 import com.kyang.timetracker.ui.component.NavigationBottomBar
 import com.kyang.timetracker.ui.theme.TimeTrackerTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
