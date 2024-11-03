@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="specified_time">指定時刻</string>
+    <string name="start_time">開始時刻</string>
+    <string name="end_time">終了時刻</string>
+    <string name="check_time">時刻を確認する</string>
+    <string name="time_in_range">期間の中</string>
+    <string name="time_not_in_range">期間の外</string>
+</resources>

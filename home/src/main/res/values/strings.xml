@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="specified_time">Specified Time</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="check_time">Check Time</string>
+    <string name="time_in_range">Specified time is in the range</string>
+    <string name="time_not_in_range">Specified time is not in the range</string>
+</resources>
