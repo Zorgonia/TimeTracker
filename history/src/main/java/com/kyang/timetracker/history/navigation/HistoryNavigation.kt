@@ -1,10 +1,10 @@
-package com.kyang.history.navigation
+package com.kyang.timetracker.history.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.kyang.history.ui.HistoryScreen
+import com.kyang.timetracker.history.ui.HistoryScreen
 import kotlinx.serialization.Serializable
 
 @Serializable

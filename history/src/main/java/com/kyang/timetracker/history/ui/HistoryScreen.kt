@@ -1,4 +1,4 @@
-package com.kyang.history.ui
+package com.kyang.timetracker.history.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text

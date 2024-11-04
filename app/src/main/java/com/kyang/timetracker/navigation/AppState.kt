@@ -6,8 +6,8 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navOptions
-import com.kyang.history.navigation.navigateToHistory
-import com.kyang.home.navigation.navigateToHome
+import com.kyang.timetracker.history.navigation.navigateToHistory
+import com.kyang.timetracker.home.navigation.navigateToHome
 
 class AppState(
     private val navController: NavHostController

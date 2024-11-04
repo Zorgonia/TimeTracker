@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kyang.history"
+    namespace = "com.kyang.timetracker.history"
     compileSdk = 35
 
     defaultConfig {

@@ -1,13 +1,12 @@
 package com.kyang.timetracker.navigation
 
-import android.graphics.drawable.Icon
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.kyang.history.navigation.HistoryRoute
-import com.kyang.home.navigation.HomeRoute
+import com.kyang.timetracker.history.navigation.HistoryRoute
+import com.kyang.timetracker.home.navigation.HomeRoute
 import com.kyang.timetracker.R
 import kotlin.reflect.KClass
 

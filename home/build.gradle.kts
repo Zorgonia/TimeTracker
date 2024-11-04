@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.kyang.home"
+    namespace = "com.kyang.timetracker.home"
     compileSdk = 35
 
     defaultConfig {
@@ -38,6 +38,9 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
 
+    implementation(project(":core:core-data"))
+
+
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
@@ -47,4 +50,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.serialization)
     testImplementation(libs.junit)
+    testImplementation(project(":core:core-data"))
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.kotlin)
 }

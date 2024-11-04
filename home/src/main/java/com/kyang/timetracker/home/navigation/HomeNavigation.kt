@@ -1,11 +1,11 @@
-package com.kyang.home.navigation
+package com.kyang.timetracker.home.navigation
 
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
-import com.kyang.home.ui.HomeScreen
+import com.kyang.timetracker.home.ui.HomeScreen
 import kotlinx.serialization.Serializable
 
 @Serializable

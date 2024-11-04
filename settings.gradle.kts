@@ -23,3 +23,4 @@ rootProject.name = "Time Tracker"
 include(":app")
 include(":home")
 include(":history")
+include(":core:core-data")
