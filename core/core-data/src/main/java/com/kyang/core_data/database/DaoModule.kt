@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DaoModule {
+internal object DaoModule {
     @Provides
     fun provideTimeDao(
         database: TimeDatabase

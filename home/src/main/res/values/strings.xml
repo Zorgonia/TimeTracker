@@ -6,4 +6,6 @@
     <string name="check_time">Check Time</string>
     <string name="time_in_range">Specified time is in the range</string>
     <string name="time_not_in_range">Specified time is not in the range</string>
+    <string name="save_results_button">Save Results</string>
+    <string name="results_saved">Results Saved</string>
 </resources>

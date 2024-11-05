@@ -43,8 +43,14 @@ dependencies {
     ksp(libs.hilt.compiler)
     ksp(libs.hilt.android.compiler)
 
+    implementation(project(":core:core-data"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.kotlinx.serialization)
+
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(project(":core:core-data"))
 }

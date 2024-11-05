@@ -6,4 +6,6 @@
     <string name="check_time">時刻を確認する</string>
     <string name="time_in_range">期間の中</string>
     <string name="time_not_in_range">期間の外</string>
+    <string name="save_results_button">セーブする</string>
+    <string name="results_saved">セーブしました。</string>
 </resources>

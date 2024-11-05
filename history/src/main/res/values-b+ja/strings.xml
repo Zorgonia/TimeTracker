@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="history_start_time_header">開始時刻</string>
+    <string name="history_end_time_header">終了時刻</string>
+    <string name="history_specified_time_header">指定時刻</string>
+    <string name="history_in_range_header">合間以内</string>
+</resources>

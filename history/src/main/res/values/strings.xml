@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="history_start_time_header">Start Time</string>
+    <string name="history_end_time_header">End Time</string>
+    <string name="history_specified_time_header">Selected Time</string>
+    <string name="history_in_range_header">In Range</string>
+</resources>

@@ -31,7 +31,10 @@ class HomeViewModel @Inject constructor(
                 it.copy(
                     startTime = text,
                     checkEnabled = it.endTime.isNotEmpty() && it.specifiedTime.isNotEmpty() && text.isNotEmpty(),
-                    errorMessage = null
+                    errorMessage = null,
+                    showSaveButton = false,
+                    showSavedText = false,
+                    timeInRange = null
                 )
             }
         }
@@ -43,7 +46,10 @@ class HomeViewModel @Inject constructor(
                 it.copy(
                     endTime = text,
                     checkEnabled = it.startTime.isNotEmpty() && it.specifiedTime.isNotEmpty() && text.isNotEmpty(),
-                    errorMessage = null
+                    errorMessage = null,
+                    showSaveButton = false,
+                    showSavedText = false,
+                    timeInRange = null
                 )
             }
         }
@@ -55,7 +61,10 @@ class HomeViewModel @Inject constructor(
                 it.copy(
                     specifiedTime = text,
                     checkEnabled = it.endTime.isNotEmpty() && it.startTime.isNotEmpty() && text.isNotEmpty(),
-                    errorMessage = null
+                    errorMessage = null,
+                    showSaveButton = false,
+                    showSavedText = false,
+                    timeInRange = null
                 )
             }
         }
@@ -73,7 +82,8 @@ class HomeViewModel @Inject constructor(
                 is Result.Success -> {
                     _homeUiState.update {
                         it.copy(
-                            timeInRange = result.data
+                            timeInRange = result.data,
+                            showSaveButton = true
                         )
                     }
                 }
@@ -83,6 +93,37 @@ class HomeViewModel @Inject constructor(
                         it.copy(
                             errorMessage = result.exception.message
                         )
+                    }
+                }
+            }
+        }
+    }
+
+    fun saveTimeEntry() {
+        viewModelScope.launch {
+            _homeUiState.value.let { uiState ->
+                val result = homeRepository.saveTimeEntry(
+                    startTime = uiState.startTime,
+                    endTime = uiState.endTime,
+                    specifiedTime = uiState.specifiedTime,
+                    inRange = uiState.timeInRange ?: false
+                )
+
+                when (result) {
+                    is Result.Success -> {
+                        _homeUiState.update {
+                            it.copy(
+                                showSavedText = true
+                            )
+                        }
+                    }
+
+                    is Result.Error -> {
+                        _homeUiState.update {
+                            it.copy(
+                                errorMessage = result.exception.message
+                            )
+                        }
                     }
                 }
             }

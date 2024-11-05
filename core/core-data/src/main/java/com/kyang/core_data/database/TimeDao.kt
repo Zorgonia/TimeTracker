@@ -12,7 +12,7 @@ interface TimeDao {
     fun getAllFlow(): Flow<List<TimeEntry>>
 
     @Query("SELECT * FROM times")
-    fun getAll(): List<TimeEntry>
+    suspend fun getAll(): List<TimeEntry>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(timeEntry: TimeEntry)

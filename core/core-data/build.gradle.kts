@@ -33,6 +33,7 @@ dependencies {
 
     //room
     implementation(libs.room)
+    implementation(libs.room.ktx)
     annotationProcessor(libs.room.compiler)
     ksp(libs.room.compiler)
 
