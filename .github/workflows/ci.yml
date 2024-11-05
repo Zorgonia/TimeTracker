@@ -1,0 +1,79 @@
+name: "CI"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  ci:
+    name: "Lint, Test, Build"
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: "Setup JDK"
+        uses: actions/setup-java@v4
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: "Set up Android SDK."
+        uses: android-actions/setup-android@v3
+        with:
+          log-accepted-android-sdk-licenses: false
+
+      - name: "Checkout ${{ github.ref }} ref in ${{ github.repository }} repository"
+        uses: actions/checkout@v4
+
+      - name: "Set up Gradle."
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' }}
+
+      - name: "Lint"
+        run: ./gradlew :app:lintRelease
+
+      - name: "Upload 'Lint reports' artifact."
+        uses: actions/upload-artifact@v4
+        if: ${{ success() || failure() }}
+        with:
+          name: "Lint reports"
+          if-no-files-found: error
+          path: |
+            **/build/reports/lint-*
+
+      - name: "Execute unit tests."
+        shell: bash
+        run: ./gradlew :app:test --continue
+
+      - name: "Upload 'Unit Test reports' artifact."
+        uses: actions/upload-artifact@v4
+        if: ${{ success() || failure() }}
+        with:
+          name: "Unit Test reports"
+          if-no-files-found: error
+          path: |
+            **/build/reports/tests
+            
+      - name: "Assemble."
+        shell: bash
+        run: ./gradlew :app:assemble
+
+      - name: "Upload 'Android APK' artifact."
+        uses: actions/upload-artifact@v4
+        if: ${{ success() || failure() }}
+        with:
+          name: "Android APKs"
+          if-no-files-found: error
+          path: |
+            **/build/outputs/apk/*/*.apk
+            **/build/outputs/mapping/*/mapping.txt
+            **/build/outputs/mapping/*/configuration.txt
