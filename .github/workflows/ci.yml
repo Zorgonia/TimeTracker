@@ -6,6 +6,10 @@ on:
     branches:
       - 'main'
 
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
 jobs:
   ci:
     name: "Lint, Test, Build"
@@ -35,9 +39,11 @@ jobs:
 
       - name: "Set up Gradle."
         uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' }}
 
       - name: "Lint"
-        run: ./gradlew :app:lintRelease
+        run: ./gradlew lintRelease
 
       - name: "Upload 'Lint reports' artifact."
         uses: actions/upload-artifact@v4
@@ -50,7 +56,7 @@ jobs:
 
       - name: "Execute unit tests."
         shell: bash
-        run: ./gradlew :app:test --continue
+        run: ./gradlew test --continue
 
       - name: "Upload 'Unit Test reports' artifact."
         uses: actions/upload-artifact@v4
