@@ -4,15 +4,18 @@ import junit.framework.TestCase.assertEquals
 import org.junit.Before
 import org.junit.Test
 import com.kyang.core_data.Result
+import com.kyang.core_data.database.TimeDao
 import kotlinx.coroutines.test.runTest
+import org.mockito.Mockito.mock
 
 class HomeRepositoryImplTest {
 
     private lateinit var homeRepository: HomeRepository
+    private val mockedDao = mock<TimeDao>()
 
     @Before
     fun setup() {
-        homeRepository = HomeRepositoryImpl()
+        homeRepository = HomeRepositoryImpl(mockedDao)
     }
 
     @Test

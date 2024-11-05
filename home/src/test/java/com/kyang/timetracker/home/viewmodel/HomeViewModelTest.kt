@@ -11,10 +11,11 @@ import org.mockito.Mockito.mock
 class HomeViewModelTest {
 
     private lateinit var viewModel: HomeViewModel
+    private val mockRepository = mock<HomeRepository>()
 
     @Before
     fun setup() {
-        viewModel = HomeViewModel(mock<HomeRepository>())
+        viewModel = HomeViewModel(mockRepository)
     }
 
     @Test
@@ -87,5 +88,11 @@ class HomeViewModelTest {
         viewModel.updateEndTime("1")
         viewModel.updateSpecifiedTime("1")
         assertEquals(true, viewModel.homeUiState.value.checkEnabled)
+    }
+
+    @Test
+    fun `GIVEN updateSpecifiedTime WHEN specified time filled THEN showSavedText false`() {
+        viewModel.updateSpecifiedTime("1")
+        assertEquals(false, viewModel.homeUiState.value.showSavedText)
     }
 }
