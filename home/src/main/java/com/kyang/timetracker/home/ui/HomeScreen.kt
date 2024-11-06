@@ -53,7 +53,6 @@ internal fun HomeScreen(
     checkSpecifiedTime: () -> Unit,
     onSave: () -> Unit,
 ) {
-
     Column(
         modifier = modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -108,21 +107,6 @@ internal fun HomeScreen(
             Text(message)
         }
     }
-}
-
-@Composable
-fun InputTextField(
-    text: String, onChange: (String) -> Unit, @StringRes label: Int, modifier: Modifier = Modifier
-) {
-    TextField(
-        value = text,
-        onValueChange = onChange,
-        label = {
-            Text(stringResource(label))
-        },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        modifier = modifier
-    )
 }
 
 @Preview

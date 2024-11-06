@@ -7,6 +7,9 @@ import com.kyang.timetracker.history.model.mapper.toLocalTimeEntry
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Implementation of HistoryRepository with time database
+ */
 @Singleton
 class DatabaseHistoryRepository @Inject constructor(
     private val timeDao: TimeDao

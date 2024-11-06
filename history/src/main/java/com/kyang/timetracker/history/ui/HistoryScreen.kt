@@ -14,8 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kyang.timetracker.history.R
+import com.kyang.timetracker.history.model.LocalTimeEntry
 import com.kyang.timetracker.history.repository.HistoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 
@@ -33,7 +35,7 @@ private fun HistoryScreen(modifier: Modifier = Modifier, uiState: HistoryUiState
         item {
             HeaderRow(modifier.fillMaxWidth())
         }
-        items(uiState.historyItems, key = {it.id}) { item ->
+        items(uiState.historyItems, key = { it.id }) { item ->
             HistoryRow(
                 modifier = Modifier.fillMaxWidth(),
                 startTime = item.startTime,
@@ -45,37 +47,20 @@ private fun HistoryScreen(modifier: Modifier = Modifier, uiState: HistoryUiState
     }
 }
 
+@Preview
 @Composable
-fun HeaderRow(modifier: Modifier = Modifier) {
-    Row(modifier = Modifier.fillMaxWidth()) {
-        Text(stringResource(R.string.history_start_time_header), modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(stringResource(R.string.history_end_time_header), modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(stringResource(R.string.history_specified_time_header), modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(stringResource(R.string.history_in_range_header).toString(), modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-    }
-}
-
-
-@Composable
-fun HistoryRow(
-    modifier: Modifier = Modifier,
-    startTime: String,
-    endTime: String,
-    specifiedTime: String,
-    inRange: Boolean
-) {
-    Row(
-        modifier.background(
-            if (inRange) {
-                Color.Green.copy(alpha = 0.5f)
-            } else {
-                Color.Red.copy(alpha = 0.5f)
-            }
+private fun HistoryScreenPreview() {
+    HistoryScreen(
+        uiState = HistoryUiState(
+            historyItems = listOf(
+                LocalTimeEntry(
+                    id = 1,
+                    startTime = "12",
+                    endTime = "13",
+                    specifiedTime = "1",
+                    inRange = false
+                )
+            )
         )
-    ) {
-        Text(startTime, modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(endTime, modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(specifiedTime, modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-        Text(inRange.toString(), modifier = Modifier.weight(1f), textAlign = TextAlign.Center)
-    }
+    )
 }

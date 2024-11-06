@@ -11,6 +11,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for HistoryScreen
+ * @param homeRepository HomeRepository Repository dealing with home data functions
+ */
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository
@@ -20,6 +24,7 @@ class HomeViewModel @Inject constructor(
     val homeUiState: StateFlow<HomeUiState> = _homeUiState
 
     fun verifyTimeText(text: String): Boolean {
+        //prevent user from typing two or more zeroes
         if (text.contains("00")) return false
         val intTime = text.toIntOrNull() ?: return false
         return intTime in 0..23
@@ -27,6 +32,7 @@ class HomeViewModel @Inject constructor(
 
     fun updateStartTime(text: String) {
         if (verifyTimeText(text) || text.isEmpty()) {
+            //if start time is updated successfully, hide the save button/previous result, if any
             _homeUiState.update {
                 it.copy(
                     startTime = text,
@@ -42,6 +48,7 @@ class HomeViewModel @Inject constructor(
 
     fun updateEndTime(text: String) {
         if (verifyTimeText(text) || text.isEmpty()) {
+            //if end time is updated successfully, hide the save button/previous result, if any
             _homeUiState.update {
                 it.copy(
                     endTime = text,
@@ -57,6 +64,7 @@ class HomeViewModel @Inject constructor(
 
     fun updateSpecifiedTime(text: String) {
         if (verifyTimeText(text) || text.isEmpty()) {
+            //if specified time is updated successfully, hide the save button/previous result, if any
             _homeUiState.update {
                 it.copy(
                     specifiedTime = text,
@@ -72,11 +80,10 @@ class HomeViewModel @Inject constructor(
 
     fun checkWhetherTimeInRange() {
         viewModelScope.launch {
-
             val result = homeRepository.specifiedTimeInRange(
-                specified = _homeUiState.value.specifiedTime,
-                end = _homeUiState.value.endTime,
-                start = _homeUiState.value.startTime
+                specifiedTime = _homeUiState.value.specifiedTime,
+                endTime = _homeUiState.value.endTime,
+                startTime = _homeUiState.value.startTime
             )
             when (result) {
                 is Result.Success -> {
@@ -87,7 +94,6 @@ class HomeViewModel @Inject constructor(
                         )
                     }
                 }
-
                 is Result.Error -> {
                     _homeUiState.update {
                         it.copy(
@@ -117,7 +123,6 @@ class HomeViewModel @Inject constructor(
                             )
                         }
                     }
-
                     is Result.Error -> {
                         _homeUiState.update {
                             it.copy(

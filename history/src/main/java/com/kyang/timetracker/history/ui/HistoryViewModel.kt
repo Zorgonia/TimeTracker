@@ -11,6 +11,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for HistoryScreen
+ * @param historyRepository HistoryRepository Repository dealing with getting history items
+ */
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
     private val historyRepository: HistoryRepository
@@ -21,16 +25,18 @@ class HistoryViewModel @Inject constructor(
 
     fun getHistoryItems() {
         viewModelScope.launch {
-            val result = historyRepository.getTimeEntries()
-            when(result) {
+            _historyUIState.update {
+                it.copy(isLoading = true)
+            }
+            when(val result = historyRepository.getTimeEntries()) {
                 is Result.Success -> {
                     _historyUIState.update {
-                        it.copy(historyItems = result.data)
+                        it.copy(historyItems = result.data, isLoading = false)
                     }
                 }
                 is Result.Error -> {
                     _historyUIState.update {
-                        it.copy(errorMessage = result.exception.message)
+                        it.copy(errorMessage = result.exception.message, isLoading = false)
                     }
                 }
             }

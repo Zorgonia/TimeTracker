@@ -7,7 +7,8 @@ on:
       - 'main'
 
 concurrency:
-  group: ${{ github.head_ref }}
+  # head_ref is null on main
+  group: ${{ github.ref == 'refs/heads/main' && github.sha || github.head_ref }}
   cancel-in-progress: true
 
 jobs:

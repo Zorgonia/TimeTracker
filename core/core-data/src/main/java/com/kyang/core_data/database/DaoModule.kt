@@ -5,6 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+/**
+ * Hilt Module for DI of TimeDao
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 internal object DaoModule {

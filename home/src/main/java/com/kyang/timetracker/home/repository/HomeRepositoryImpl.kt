@@ -11,25 +11,29 @@ import javax.inject.Singleton
 class HomeRepositoryImpl @Inject constructor(
     private val timeDao: TimeDao
 ) : HomeRepository {
+
     override suspend fun specifiedTimeInRange(
-        specified: String,
-        start: String,
-        end: String
+        specifiedTime: String,
+        startTime: String,
+        endTime: String
     ): Result<Boolean> {
         try {
-            val specifiedTime = specified.toInt()
-            val startTime = start.toInt()
-            val endTime = end.toInt()
+            val specifiedTimeInt = specifiedTime.toInt()
+            val startTimeInt = startTime.toInt()
+            val endTimeInt = endTime.toInt()
 
-            if (startTime == endTime) {
-                return Result.Success(specifiedTime == startTime)
+            if (startTimeInt == endTimeInt) {
+                return Result.Success(specifiedTimeInt == startTimeInt)
             }
-            if (startTime <= endTime) {
-                return Result.Success(specifiedTime in startTime until endTime)
+            if (startTimeInt < endTimeInt) {
+                return Result.Success(specifiedTimeInt in startTimeInt until endTimeInt)
             }
-            val isTimeInRange = specifiedTime in endTime..23 || specifiedTime in 0 until startTime
+            // if startTime > endTime, check whether specified time between end to 23 or 0 to start time
+            val isTimeInRange =
+                specifiedTimeInt in endTimeInt..23 || specifiedTimeInt in 0 until startTimeInt
             return Result.Success(isTimeInRange)
         } catch (e: NumberFormatException) {
+            //if one input is not a valid number, return an error
             return Result.Error(e)
         }
     }
@@ -51,10 +55,7 @@ class HomeRepositoryImpl @Inject constructor(
                 specifiedTime = specifiedConverted,
                 inRange = inRange
             )
-
             timeDao.insert(timeEntry)
-            Log.d("DatabaseHistoryRepository", "getTimeEntries: $timeEntry")
-
             return Result.Success(true)
         } catch (e: Exception) {
             return Result.Error(e)

@@ -4,13 +4,12 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
 
+/**
+ * Functions to interact with time database
+ */
 @Dao
 interface TimeDao {
-    @Query("SELECT * FROM times")
-    fun getAllFlow(): Flow<List<TimeEntry>>
-
     @Query("SELECT * FROM times")
     suspend fun getAll(): List<TimeEntry>
 

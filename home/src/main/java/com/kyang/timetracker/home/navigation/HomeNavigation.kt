@@ -13,6 +13,9 @@ object HomeRoute
 
 fun NavController.navigateToHome(navOptions: NavOptions) = navigate(route = HomeRoute, navOptions)
 
+/**
+ * Nav graph for the home screen. Any inner screens would be defined here.
+ */
 fun NavGraphBuilder.homeScreen() {
     composable<HomeRoute>() {
         HomeScreen(viewModel = hiltViewModel())

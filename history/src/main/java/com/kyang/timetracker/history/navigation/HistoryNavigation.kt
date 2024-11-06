@@ -14,6 +14,9 @@ object HistoryRoute
 
 fun NavController.navigateToHistory(navOptions: NavOptions) = navigate(route = HistoryRoute, navOptions)
 
+/**
+ * Nav graph for the history screen. Any inner screens would be defined here.
+ */
 fun NavGraphBuilder.historyScreen() {
     composable<HistoryRoute>() {
         val viewModel = hiltViewModel<HistoryViewModel>()
