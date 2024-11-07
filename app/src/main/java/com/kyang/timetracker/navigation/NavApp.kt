@@ -8,6 +8,9 @@ import com.kyang.timetracker.history.navigation.historyScreen
 import com.kyang.timetracker.home.navigation.HomeRoute
 import com.kyang.timetracker.home.navigation.homeScreen
 
+/**
+ * NavHost for the app, should contain all the bottom bar nav items
+ */
 @Composable
 fun NavApp(modifier: Modifier = Modifier, navController: NavHostController) {
     NavHost(
@@ -18,5 +21,4 @@ fun NavApp(modifier: Modifier = Modifier, navController: NavHostController) {
        homeScreen()
        historyScreen()
     }
-
 }

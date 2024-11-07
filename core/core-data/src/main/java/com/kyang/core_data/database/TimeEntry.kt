@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 /**
  * Data Module for storage of time entry
- * @param id Int Primary key
- * @param startTime Long Start time of entry
- * @param endTime Long End time of entry
- * @param specifiedTime Long Specified time of entry
- * @param inRange Boolean Whether the specified time is in the time range
+ * @param id Primary key
+ * @param startTime Start time of entry
+ * @param endTime End time of entry
+ * @param specifiedTime Specified time of entry
+ * @param inRange Whether the specified time is in the time range
  */
 @Entity(tableName = "times")
 data class TimeEntry(

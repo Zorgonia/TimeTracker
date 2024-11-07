@@ -41,4 +41,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
+    //to create main dispatcher rule
+    implementation(libs.kotlinx.coroutines.test)
+    implementation(libs.junit)
 }

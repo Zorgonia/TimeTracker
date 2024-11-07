@@ -14,7 +14,7 @@ object HomeRoute
 fun NavController.navigateToHome(navOptions: NavOptions) = navigate(route = HomeRoute, navOptions)
 
 /**
- * Nav graph for the home screen. Any inner screens would be defined here.
+ * Nav graph for the home screen. Any inner screens for the home destination would be defined here.
  */
 fun NavGraphBuilder.homeScreen() {
     composable<HomeRoute>() {

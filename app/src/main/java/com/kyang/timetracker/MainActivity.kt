@@ -56,6 +56,6 @@ fun TimeTrackerApp(modifier: Modifier = Modifier) {
             })
         })
     }) { innerPadding ->
-        NavApp(modifier = Modifier.padding(innerPadding), navController)
+        NavApp(modifier = modifier.padding(innerPadding), navController)
     }
 }

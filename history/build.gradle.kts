@@ -40,6 +40,7 @@ dependencies {
 
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    testImplementation(project(":core:core-data"))
     ksp(libs.hilt.compiler)
     ksp(libs.hilt.android.compiler)
 

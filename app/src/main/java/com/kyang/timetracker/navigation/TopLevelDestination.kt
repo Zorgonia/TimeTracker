@@ -10,6 +10,13 @@ import com.kyang.timetracker.home.navigation.HomeRoute
 import com.kyang.timetracker.R
 import kotlin.reflect.KClass
 
+/**
+ * Enum class for the top level destinations in the app
+ * @param route The navigation route for the destination
+ * @param label The string resource for the label for the destination
+ * @param icon The icon for the destination
+ * @param iconDescription The string resource for the description of the icon for the destination
+ */
 enum class TopLevelDestination(
     val route: KClass<*>,
     @StringRes val label: Int,

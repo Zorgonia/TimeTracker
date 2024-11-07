@@ -1,7 +1,7 @@
 package com.kyang.timetracker.history.viewmodel
 
 import com.kyang.core_data.Result
-import com.kyang.timetracker.history.MainDispatcherRule
+import com.kyang.core_data.test.MainDispatcherRule
 import com.kyang.timetracker.history.model.LocalTimeEntry
 import com.kyang.timetracker.history.repository.HistoryRepository
 import com.kyang.timetracker.history.ui.HistoryViewModel

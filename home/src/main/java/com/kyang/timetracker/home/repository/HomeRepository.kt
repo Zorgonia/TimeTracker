@@ -6,10 +6,10 @@ interface HomeRepository {
 
     /**
      * Check if specified time is in range of start and end time
-     * @param specifiedTime String The specified time
-     * @param startTime String The start time
-     * @param endTime String The end time
-     * @return Result<Boolean> Whether the specified time is in range of start and end time, or an error
+     * @param specifiedTime The specified time
+     * @param startTime The start time
+     * @param endTime The end time
+     * @return On success: whether the specified time is in range of start and end time, on failure: an error
      */
     suspend fun specifiedTimeInRange(
         specifiedTime: String,
@@ -19,11 +19,11 @@ interface HomeRepository {
 
     /**
      * Save time entry to specified storage type
-     * @param specifiedTime String The specified time
-     * @param startTime String The start time
-     * @param endTime String The end time
-     * @param inRange Boolean Whether the specified time is in range of start and end time
-     * @return Result<Boolean> Whether the storage was successful, or an error
+     * @param specifiedTime The specified time
+     * @param startTime The start time
+     * @param endTime The end time
+     * @param inRange Whether the specified time is in range of start and end time
+     * @return On success: whether the storage was successful, on failure: an exception
      */
     suspend fun saveTimeEntry(
         startTime: String,

@@ -9,6 +9,9 @@ import androidx.navigation.navOptions
 import com.kyang.timetracker.history.navigation.navigateToHistory
 import com.kyang.timetracker.home.navigation.navigateToHome
 
+/**
+ * App State to control the nav controller and navigation in the app
+ */
 class AppState(
     private val navController: NavHostController
 ) {
@@ -17,12 +20,19 @@ class AppState(
 
     val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.entries
 
+    /**
+     * Navigation function for top level destinations
+     * @param topLevelDestination: The destination to navigate to
+     */
     fun navigateToTopLevelDestination(topLevelDestination: TopLevelDestination) {
         val navOptions = navOptions {
+            // save current state in backstack
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true
             }
+            // only launch one instance of destination
             launchSingleTop = true
+            // restore previous state if it exists
             restoreState = true
         }
 
