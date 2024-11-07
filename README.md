@@ -16,6 +16,10 @@ The app is architected as the above. The core-data module provides access to the
 both the history and home feature modules. The history and home feature modules are then used in
 the NavHost in the app module.
 
+If this project were to be expanded, there could be additional core sub modules added (e.g. core-ui)
+as needed. There could also be a possibility to create submodules within the feature modules, such
+as home-ui, home-data, and home-domain.
+
 ### CI
 There is a CI file that runs lint, unit tests, and builds the app on pull request, and push to main.
 
